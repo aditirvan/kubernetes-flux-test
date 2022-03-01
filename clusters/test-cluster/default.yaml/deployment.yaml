@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: adhithia-app
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      app: adhithia-app
+  template:
+    metadata:
+      labels:
+        app: adhithia-app
+    spec:
+      containers:
+      - name: adhithia-app
+        image: nginx:1.21.5-alpine
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 8080
